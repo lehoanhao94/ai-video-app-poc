@@ -9,8 +9,8 @@ import { DefaultLayout } from '@/renderer/components/layout'
 </template>
 
 <style>
-@import "tailwindcss";
-@import "tailwindcss-primeui";
+@import 'tailwindcss';
+@import 'tailwindcss-primeui';
 html {
   overflow-y: auto !important;
   user-select: none;

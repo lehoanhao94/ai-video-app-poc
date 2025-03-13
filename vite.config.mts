@@ -101,7 +101,7 @@ export default defineConfig(({ mode }) => {
       // Docs: https://github.com/electron-vite/vite-plugin-electron
       ElectronPlugin(electronPluginConfigs),
       RendererPlugin(),
-      tailwindcss(),
+      tailwindcss()
     ]
   }
 })
