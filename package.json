@@ -1,0 +1,96 @@
+{
+  "name": "vutron",
+  "appId": "com.vutron.vutron",
+  "version": "1.0.0",
+  "description": "Quick Start Templates for Vite + Vue 3 + Electron",
+  "homepage": "https://vutron.cdget.com",
+  "author": "CDGet <jooy2.contact@gmail.com>",
+  "license": "MIT",
+  "main": "dist/main/index.js",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jooy2/vutron.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jooy2/vutron/issues"
+  },
+  "debug": {
+    "env": {
+      "VITE_DEV_SERVER_URL": "http://localhost:5173"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "dev:debug": "vite -d",
+    "dev:debug:force": "vite -d --force",
+    "build": "npm run build:pre && electron-builder --config=buildAssets/builder/config.js",
+    "build:pre": "npm run format:fix && vue-tsc --noEmit && vite build",
+    "build:all": "npm run build:pre && electron-builder --config=buildAssets/builder/config.js -wml",
+    "build:dir": "npm run build:pre && electron-builder --config=buildAssets/builder/config.js --dir",
+    "build:mac": "npm run build:pre && CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --config=buildAssets/builder/config.js --mac",
+    "build:linux": "npm run build:pre && electron-builder --config=buildAssets/builder/config.js --linux",
+    "build:win": "npm run build:pre && electron-builder --config=buildAssets/builder/config.js --windows",
+    "lint": "eslint --ext .js,.ts,.vue -f ./node_modules/eslint-friendly-formatter src",
+    "lint:fix": "eslint --ext .js,.ts,.vue -f ./node_modules/eslint-friendly-formatter --fix src",
+    "format": "prettier .",
+    "format:fix": "prettier . --write",
+    "test": "npm run build:pre && playwright test",
+    "test:linux": "npm run build:pre && xvfb-run --auto-servernum --server-args='-screen 0, 1280x960x24' -- playwright test"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@mdi/font": "^7.4.47",
+    "@primeuix/themes": "^1.0.0",
+    "@tailwindcss/vite": "^4.0.14",
+    "etro": "^0.12.1",
+    "pinia": "^3.0.1",
+    "primeicons": "^7.0.0",
+    "primevue": "^4.3.2",
+    "tailwindcss-primeui": "^0.5.1",
+    "vue": "^3.5.13",
+    "vue-i18n": "^11.1.1",
+    "vue-router": "^4.5.0",
+    "vuetify": "^3.7.14"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.1",
+    "@primevue/auto-import-resolver": "^4.3.2",
+    "@typescript-eslint/eslint-plugin": "7.16.1",
+    "@typescript-eslint/parser": "7.16.1",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vitejs/plugin-vue-jsx": "^4.1.1",
+    "dotenv": "^16.4.7",
+    "electron": "^34.3.0",
+    "electron-builder": "^25.1.8",
+    "electron-extension-installer": "^1.2.0",
+    "eslint": "8.57.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-config-standard": "17.1.0",
+    "eslint-friendly-formatter": "4.0.1",
+    "eslint-plugin-import": "2.30.0",
+    "eslint-plugin-n": "16.6.2",
+    "eslint-plugin-promise": "6.4.0",
+    "eslint-plugin-vue": "9.28.0",
+    "playwright": "^1.50.1",
+    "prettier": "^3.5.2",
+    "tailwindcss": "^4.0.14",
+    "tree-kill": "^1.2.2",
+    "typescript": "5.7.3",
+    "unplugin-vue-components": "^28.4.1",
+    "vite": "^6.2.0",
+    "vite-plugin-electron": "^0.29.0",
+    "vite-plugin-electron-renderer": "^0.14.6",
+    "vite-plugin-eslint": "1.8.1",
+    "vite-plugin-vuetify": "^2.1.0",
+    "vue-eslint-parser": "9.4.3",
+    "vue-tsc": "^2.2.4"
+  },
+  "overrides": {
+    "vite-plugin-electron": {
+      "electron": "$electron"
+    }
+  }
+}
