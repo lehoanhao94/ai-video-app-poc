@@ -39,7 +39,8 @@ const features = computed(() => [
     description:
       'Transform your text into a video with AI. You can use this feature to create videos from your blog posts, articles, or any other text content.',
     icon: 'fluent-mdl2:locale-language',
-    color: 'yellow'
+    color: 'yellow',
+    to: '/text-to-video'
   },
   {
     title: 'URL to video',

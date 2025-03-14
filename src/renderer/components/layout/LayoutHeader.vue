@@ -16,10 +16,14 @@
       >
         <i class="pi pi-bars !text-2xl" />
       </a>
+      <a v-if="withLogo" class="inline-flex items-center gap-3 cursor-pointer">
+        <BaseLogo class="w-8" />
+        <span class="font-semibold text-surface-900 dark:text-surface-0">AI Video Generator</span>
+      </a>
     </div>
     <div class="flex items-center gap-2">
       <ul
-        class="list-none p-0 m-0 hidden lg:flex lg:items-center select-none lg:flex-row bg-surface-0 dark:bg-surface-950 border lg:border-0 border-surface right-0 top-full z-10 shadow lg:shadow-none absolute lg:static"
+        class="list-none p-0 m-0 hidden lg:flex lg:items-center select-none lg:flex-row border lg:border-0 border-surface right-0 top-full z-10 shadow lg:shadow-none absolute lg:static"
       >
         <li>
           <a
@@ -51,3 +55,15 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { defineProps } from 'vue'
+import BaseLogo from '../base/BaseLogo.vue'
+
+const props = defineProps({
+  withLogo: {
+    type: Boolean,
+    default: false
+  }
+})
+</script>

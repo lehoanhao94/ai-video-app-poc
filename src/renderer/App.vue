@@ -1,10 +1,12 @@
 <script setup lang="tsx">
-import { DefaultLayout } from '@/renderer/components/layout'
+import { DefaultLayout, EmptyLayout, VideoEditorLayout } from '@/renderer/components/layout'
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 
 const layouts = {
-  DefaultLayout
+  DefaultLayout,
+  EmptyLayout,
+  VideoEditorLayout
 }
 const route = useRoute()
 

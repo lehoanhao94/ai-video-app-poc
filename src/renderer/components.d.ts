@@ -11,12 +11,16 @@ declare module 'vue' {
     Avatar: typeof import('primevue/avatar')['default']
     Badge: typeof import('primevue/badge')['default']
     Button: typeof import('primevue/button')['default']
+    FloatLabel: typeof import('primevue/floatlabel')['default']
+    IftaLabel: typeof import('primevue/iftalabel')['default']
     InputText: typeof import('primevue/inputtext')['default']
     Menu: typeof import('primevue/menu')['default']
     OverlayBadge: typeof import('primevue/overlaybadge')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Slider: typeof import('primevue/slider')['default']
+    Textarea: typeof import('primevue/textarea')['default']
+    VirtualScroller: typeof import('primevue/virtualscroller')['default']
   }
   export interface ComponentCustomProperties {
     Ripple: typeof import('primevue/ripple')['default']

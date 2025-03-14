@@ -1,5 +1,5 @@
 // import { MainScreen } from '@/renderer/screens'
-import { HomeScreen } from '@/renderer/screens'
+import { HomeScreen, TextToVideoScreen, VideoEditorScreen } from '@/renderer/screens'
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 export default createRouter({
@@ -13,10 +13,19 @@ export default createRouter({
       }
     },
     {
-      path: '/second',
-      component: () => import('@/renderer/screens/SecondScreen.vue'),
+      path: '/text-to-video',
+      component: TextToVideoScreen,
       meta: {
-        titleKey: 'title.second'
+        titleKey: 'title.text-to-video',
+        layout: 'EmptyLayout'
+      }
+    },
+    {
+      path: '/video-editor',
+      component: VideoEditorScreen,
+      meta: {
+        titleKey: 'title.video-editor',
+        layout: 'VideoEditorLayout'
       }
     },
     {

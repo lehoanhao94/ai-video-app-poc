@@ -19,6 +19,7 @@
     </div>
     <a
       class="flex items-center gap-4 font-medium text-surface-900 dark:text-surface-0 cursor-pointer group leading-normal"
+      @click="props.to && router.push(props.to)"
     >
       <span>Explore</span>
       <i
@@ -30,11 +31,14 @@
 
 <script setup lang="ts">
 import { defineProps } from 'vue'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const props = defineProps<{
   title?: string
   description?: string
   icon?: string
   color?: string
+  to?: string
 }>()
 </script>
