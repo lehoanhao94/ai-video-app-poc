@@ -1,11 +1,22 @@
 <script setup lang="tsx">
 import { DefaultLayout } from '@/renderer/components/layout'
+import { useRoute } from 'vue-router'
+import { computed } from 'vue'
+
+const layouts = {
+  DefaultLayout
+}
+const route = useRoute()
+
+const layout = computed(() => {
+  return (route?.meta?.layout || 'DefaultLayout') as string
+})
 </script>
 
 <template>
-  <DefaultLayout>
+  <component :is="layouts[layout]">
     <router-view />
-  </DefaultLayout>
+  </component>
 </template>
 
 <style>

@@ -7,7 +7,7 @@
     <Button icon="pi pi-home" aria-label="Play" @click="exportToBlob" />
     {{ movie?.currentTime }} / {{ movie?.duration }} /
     <div>
-      <InputText :model-value="movie?.currentTime" />
+      <InputText :model-value="movie?.currentTime?.toString() || ''" />
       <Slider :model-value="movie?.currentTime" :max="7" :step="0.1" @change="onDurationChange" />
     </div>
   </div>

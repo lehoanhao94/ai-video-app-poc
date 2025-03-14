@@ -21,8 +21,8 @@ const baseConfig = {
     type: 'distribution',
     target: [
       {
-        target: 'dmg',
-        arch: ['x64', 'arm64', 'universal']
+        target: 'mas',
+        arch: ['universal']
       }
     ]
   },

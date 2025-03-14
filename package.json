@@ -1,6 +1,6 @@
 {
-  "name": "vutron",
-  "appId": "com.vutron.vutron",
+  "name": "AI Video Generator",
+  "appId": "com.tts.aivideo",
   "version": "1.0.0",
   "description": "Quick Start Templates for Vite + Vue 3 + Electron",
   "homepage": "https://vutron.cdget.com",
@@ -56,6 +56,7 @@
     "vuetify": "^3.7.14"
   },
   "devDependencies": {
+    "@iconify/vue": "^4.3.0",
     "@playwright/test": "^1.50.1",
     "@primevue/auto-import-resolver": "^4.3.2",
     "@typescript-eslint/eslint-plugin": "7.16.1",
