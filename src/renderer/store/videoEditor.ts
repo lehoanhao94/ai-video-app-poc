@@ -186,84 +186,72 @@ export const useVideoEditorStore = defineStore('videoEditorStore', {
 
       this.selectedScene = this.scenes[0]
     },
+    createMovieLayers(scene: any) {
+      const layers = [] as any[]
+
+      const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16)
+      const visualLayer = new etro.layer.Visual({
+        startTime: scene.startTime,
+        duration: scene.duration,
+        background: etro.parseColor(randomColor)
+      })
+      layers.push(visualLayer)
+
+      // const imageLayer = new etro.layer.Image({
+      //   source: scene.thumbnail,
+      //   startTime: scene.startTime,
+      //   duration: scene.duration
+      // })
+      // layers.push(imageLayer)
+
+      const videoLayer = new etro.layer.Video({
+        source: scene.videoSource,
+        startTime: scene.startTime,
+        duration: scene.duration,
+        destWidth: this.editorWrapperWidth,
+        destHeight: this.canvasHeight,
+        sourceWidth: 1280,
+        sourceHeight: 720
+      })
+      layers.push(videoLayer)
+      const textWidth = estimateTextWidth(scene.text, 14)
+      const textX = (this.editorWrapperWidth - textWidth) / 2
+
+      // create visual layer for text background
+      const textBackgroundLayer = new etro.layer.Visual({
+        startTime: scene.startTime,
+        duration: scene.duration,
+        background: etro.parseColor('rgba(0, 0, 0, 0.5)'),
+        width: textWidth + 20,
+        height: 30,
+        x: textX - 10,
+        y: this.canvasHeight - 50
+      })
+      layers.push(textBackgroundLayer)
+      // text layer
+      const textLayer = new etro.layer.Text({
+        text: scene.text,
+        font: '14px Arial',
+        x: textX,
+        y: this.canvasHeight - 40,
+        startTime: scene.startTime,
+        duration: scene.duration
+      })
+      layers.push(textLayer)
+      return layers
+    },
     makeMovie() {
-      // const layer2 = new etro.layer.Visual({
-      //   startTime: 0,
-      //   duration: 7,
-      //   background: etro.parseColor('blue')
-      // })
-      // const layer = new etro.layer.Visual({
-      //   startTime: 7,
-      //   duration: 10,
-      //   background: etro.parseColor('red')
-      // })
-
-      // const textLayer = new etro.layer.Text({
-      //   text: 'Hello World',
-      //   font: '14px Arial',
-      //   x: 50,
-      //   y: 10,
-      //   startTime: 0,
-      //   duration: 5
-      // })
-      // movie.value.layers.push(textLayer)
-
       // remove all layers
       this.movie?.layers.splice(0, this.movie.layers.length)
 
       // for each scene
       for (const scene of this.scenes) {
-        const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16)
-        const visualLayer = new etro.layer.Visual({
-          startTime: scene.startTime,
-          duration: scene.duration,
-          background: etro.parseColor(randomColor)
-        })
-        this.movie?.layers.push(visualLayer)
-
-        // const imageLayer = new etro.layer.Image({
-        //   source: scene.thumbnail,
-        //   startTime: scene.startTime,
-        //   duration: scene.duration
-        // })
-        // this.movie?.layers.push(imageLayer)
-
-        const videoLayer = new etro.layer.Video({
-          source: scene.videoSource,
-          startTime: scene.startTime,
-          duration: scene.duration,
-          destWidth: this.editorWrapperWidth,
-          destHeight: this.canvasHeight,
-          sourceWidth: 1280,
-          sourceHeight: 720
-        })
-        this.movie?.layers.push(videoLayer)
-        const textWidth = estimateTextWidth(scene.text, 14)
-        const textX = (this.editorWrapperWidth - textWidth) / 2
-
-        // create visual layer for text background
-        const textBackgroundLayer = new etro.layer.Visual({
-          startTime: scene.startTime,
-          duration: scene.duration,
-          background: etro.parseColor('rgba(0, 0, 0, 0.5)'),
-          width: textWidth + 20,
-          height: 30,
-          x: textX - 10,
-          y: this.canvasHeight - 50
-        })
-        this.movie?.layers.push(textBackgroundLayer)
-        // text layer
-        const textLayer = new etro.layer.Text({
-          text: scene.text,
-          font: '14px Arial',
-          x: textX,
-          y: this.canvasHeight - 40,
-          startTime: scene.startTime,
-          duration: scene.duration
-        })
-        this.movie?.layers.push(textLayer)
+        const layers = this.createMovieLayers(scene)
+        this.movie?.layers.push(...layers)
       }
     },
+
+    makeSelectedSceneMovie() {},
 
     seekToScene(scene: any) {
       this.selectedScene = scene

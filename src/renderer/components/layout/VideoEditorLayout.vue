@@ -16,7 +16,30 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import VideoEditorSidebarMenu from '../video-editor/VideoEditorSidebarMenu.vue'
 import VideoEditor from '../video-editor/VideoEditor.vue'
+import { useTextToVideoStore } from '@/renderer/store/textToVideo'
+import { useVideoEditorStore } from '@/renderer/store/videoEditor'
+import { nextTick, watch, onMounted } from 'vue'
+import { storeToRefs } from 'pinia'
+const videoEditorStore = useVideoEditorStore()
+const textToVideoStore = useTextToVideoStore()
+
+const { videoScenes } = storeToRefs(textToVideoStore)
+onMounted(() => {
+  nextTick(() => {
+    videoEditorStore.createScenesFromScripts(videoScenes.value)
+    videoEditorStore.makeMovie()
+  })
+})
+
+watch(
+  () => videoScenes.value,
+  () => {
+    nextTick(() => {
+      videoEditorStore.createScenesFromScripts(videoScenes.value)
+    })
+  },
+  { deep: true }
+)
 </script>
