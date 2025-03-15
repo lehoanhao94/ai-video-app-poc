@@ -25,5 +25,6 @@ declare module 'vue' {
   export interface ComponentCustomProperties {
     Ripple: typeof import('primevue/ripple')['default']
     StyleClass: typeof import('primevue/styleclass')['default']
+    Tooltip: typeof import('primevue/tooltip')['default']
   }
 }

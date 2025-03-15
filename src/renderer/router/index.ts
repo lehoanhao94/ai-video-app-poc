@@ -24,7 +24,15 @@ export default createRouter({
       path: '/video-editor',
       component: VideoEditorScreen,
       meta: {
-        titleKey: 'title.video-editor',
+        titleKey: 'title.video-editor-story',
+        layout: 'VideoEditorLayout'
+      }
+    },
+    {
+      path: '/video-editor/visuals',
+      component: () => import('@/renderer/screens/video-editor/VideoEditorVisualsTab.vue'),
+      meta: {
+        titleKey: 'title.visuals',
         layout: 'VideoEditorLayout'
       }
     },

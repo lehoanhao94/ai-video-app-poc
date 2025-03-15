@@ -17,6 +17,9 @@ dependencies:
   etro:
     specifier: ^0.12.1
     version: 0.12.1
+  konva:
+    specifier: ^9.3.19
+    version: 9.3.19
   pinia:
     specifier: ^3.0.1
     version: 3.0.1(typescript@5.7.3)(vue@3.5.13)
@@ -35,6 +38,9 @@ dependencies:
   vue-i18n:
     specifier: ^11.1.1
     version: 11.1.2(vue@3.5.13)
+  vue-konva:
+    specifier: ^3.2.0
+    version: 3.2.0(konva@9.3.19)(vue@3.5.13)
   vue-router:
     specifier: ^4.5.0
     version: 4.5.0(vue@3.5.13)
@@ -4282,6 +4288,10 @@ packages:
       json-buffer: 3.0.1
     dev: true
 
+  /konva@9.3.19:
+    resolution: {integrity: sha512-BJQTPL9ykX8TndeXZSz2ks4px6cb0K+uBBej/qShXKqVM8tVrU30eDSrcCa6ai+rHahvI6wzfZTXHUheICMcUQ==}
+    dev: false
+
   /lazy-val@1.0.5:
     resolution: {integrity: sha512-0/BnGCCfyUMkBpeDgWihanIAF9JmZhHBgUhEqzvf+adhNGLoP6TaiI5oF8oyb3I45P+PcnrqihSf01M0l0G5+Q==}
     dev: true
@@ -6179,6 +6189,17 @@ packages:
       '@intlify/core-base': 11.1.2
       '@intlify/shared': 11.1.2
       '@vue/devtools-api': 6.6.4
+      vue: 3.5.13(typescript@5.7.3)
+    dev: false
+
+  /vue-konva@3.2.0(konva@9.3.19)(vue@3.5.13):
+    resolution: {integrity: sha512-n1KcOJDvTsgBRy/9HNAEm+5mNgvIxatImIjeuietH5Qt3yHbIK8mp1sP6TQL+a3Pne45UiMO9W+Gwrq1cjptkw==}
+    engines: {node: '>= 4.0.0', npm: '>= 3.0.0'}
+    peerDependencies:
+      konva: '>7'
+      vue: ^3
+    dependencies:
+      konva: 9.3.19
       vue: 3.5.13(typescript@5.7.3)
     dev: false
 

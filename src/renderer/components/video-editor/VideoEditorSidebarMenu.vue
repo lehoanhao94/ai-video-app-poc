@@ -6,7 +6,7 @@
       </div>
       <div class="mt-1">
         <ul class="list-none py-4 m-0">
-          <li v-for="menu in menus" :key="menu.label">
+          <li v-for="menu in menus" :key="menu.label" @click="router.push(menu.to)">
             <a
               class="flex flex-row lg:flex-col items-center cursor-pointer p-4 lg:justify-center hover:bg-surface-800 rounded-border text-surface-300 hover:text-white duration-150 transition-colors"
             >
@@ -25,15 +25,19 @@
 <script setup>
 import { computed } from 'vue'
 import BaseLogo from '../base/BaseLogo.vue'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const menus = computed(() => [
   {
     icon: 'hugeicons:block-game',
-    label: 'Story'
+    label: 'Story',
+    to: '/video-editor/'
   },
   {
     icon: 'hugeicons:ai-video',
-    label: 'Visuals'
+    label: 'Visuals',
+    to: '/video-editor/visuals'
   },
   {
     icon: 'hugeicons:ai-audio',
