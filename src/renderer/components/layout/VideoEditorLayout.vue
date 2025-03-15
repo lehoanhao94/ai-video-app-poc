@@ -2,8 +2,17 @@
   <div class="w-full min-h-screen relative px-2">
     <VideoEditorSidebarMenu />
     <div class="ml-24 scrollbar-thin h-screen overflow-y-auto">
-      <div class="h-[40px]"> Header </div>
-      <div class="grid grid-cols-12 h-[calc(100%-40px)]">
+      <div class="h-[60px] pt-2">
+        <div class="flex items-center justify-end gap-4">
+          <Button
+            label="Preview video"
+            icon="pi pi-check"
+            icon-pos="right"
+            @click="onPrewiewVideo"
+          />
+        </div>
+      </div>
+      <div class="grid grid-cols-12 h-[calc(100%-60px)]">
         <div class="col-span-5 overflow-y-auto scrollbar-thin">
           <slot />
         </div>
@@ -29,7 +38,7 @@ const { videoScenes } = storeToRefs(textToVideoStore)
 onMounted(() => {
   nextTick(() => {
     videoEditorStore.createScenesFromScripts(videoScenes.value)
-    videoEditorStore.makeMovie()
+    // videoEditorStore.makeMovie()
   })
 })
 
@@ -42,4 +51,9 @@ watch(
   },
   { deep: true }
 )
+
+const onPrewiewVideo = () => {
+  videoEditorStore.makeMovie()
+  videoEditorStore.movie?.play()
+}
 </script>

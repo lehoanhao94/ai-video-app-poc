@@ -6,7 +6,7 @@
       v-for="item in scenes"
       :key="item.id"
       class="flex flex-row items-center gap-4 px-2"
-      @click="selectedScene = item"
+      @click="onSelectScene(item)"
     >
       <div>
         <img
@@ -38,4 +38,9 @@ import { useVideoEditorStore } from '@/renderer/store/videoEditor'
 import { storeToRefs } from 'pinia'
 const videoEditorStore = useVideoEditorStore()
 const { scenes, selectedScene } = storeToRefs(videoEditorStore)
+
+const onSelectScene = (scene) => {
+  videoEditorStore.selectedScene = scene
+  videoEditorStore.makeSelectedSceneMovie()
+}
 </script>

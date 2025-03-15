@@ -15,23 +15,25 @@
         </button>
       </div>
       <div ref="editorWrapper" class="editor w-full flex-1">
-        <div v-if="!movie?.currentTime" class="flex items-center justify-center relative h-fit">
-          <img
-            :src="selectedScene?.thumbnail"
-            alt="Thumbnail"
-            class="w-full"
-            :style="`height: ${canvasHeight}px`"
-          />
+        <div class="relative group">
+          <div v-if="!movie?.currentTime" class="flex items-center justify-center h-fit">
+            <img
+              :src="selectedScene?.thumbnail"
+              alt="Thumbnail"
+              class="w-full"
+              :style="`height: ${canvasHeight}px`"
+            />
+          </div>
+          <canvas v-show="movie?.currentTime" ref="canvas" class="w-full"></canvas>
           <div
-            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-gray-800/70 p-2 rounded-lg flex items-center gap-4 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700/80"
+            class="hidden group-hover:flex absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-gray-800/70 p-2 rounded-lg items-center gap-4 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700/80"
+            @click="onPlay"
           >
-            <button class="cursor-pointer" @click="onPlay">
+            <button class="cursor-pointer">
               <Icon :icon="isPlaying ? 'hugeicons:pause' : 'hugeicons:play'" class="text-4xl" />
             </button>
           </div>
         </div>
-        <canvas v-show="movie?.currentTime" ref="canvas" class="w-full"></canvas>
-
         <div class="text-sm border border-gray-300 dark:border-gray-600 p-2 mt-4 mx-4 rounded-lg">
           <ul class="list-disc ml-4">
             <li>Width: {{ editorWrapperWidth }}</li>
@@ -146,4 +148,15 @@ watch(editorWrapper, (value) => {
     videoEditorStore.makeMovie()
   }
 })
+
+// watch movide.currentTime euqals to movie.duration
+watch(
+  () => movie.value?.ended,
+  (value) => {
+    if (value) {
+      isPlaying.value = false
+    }
+  },
+  { immediate: true, deep: true }
+)
 </script>

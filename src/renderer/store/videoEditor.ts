@@ -185,6 +185,7 @@ export const useVideoEditorStore = defineStore('videoEditorStore', {
       })
 
       this.selectedScene = this.scenes[0]
+      this.makeSelectedSceneMovie()
     },
     createMovieLayers(scene: any) {
       const layers = [] as any[]
@@ -251,7 +252,17 @@ export const useVideoEditorStore = defineStore('videoEditorStore', {
       }
     },
 
-    makeSelectedSceneMovie() {},
+    makeSelectedSceneMovie() {
+      if (this.canvas) {
+        this.movie = new etro.Movie({
+          canvas: this.canvas
+        })
+
+        const scene = this.selectedScene
+        const layers = this.createMovieLayers(scene)
+        this.movie.layers.push(...layers)
+      }
+    },
 
     seekToScene(scene: any) {
       this.selectedScene = scene
