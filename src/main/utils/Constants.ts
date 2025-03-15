@@ -31,7 +31,10 @@ export default class Constants {
     nodeIntegration: false,
     contextIsolation: true,
     enableRemoteModule: false,
-    preload: join(__dirname, '../preload/index.js')
+    preload: join(__dirname, '../preload/index.js'),
+    webSecurity: false, // disable web security to solve CORS issues
+    webAudioEnabled: true, // ensure WebAudio is enabled
+    backgroundThrottling: false // prevent audio limitations when app is in background
   }
 
   static DEFAULT_TRAY_OPTIONS: TrayOptions = {
