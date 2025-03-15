@@ -1,4 +1,4 @@
-import { app, WebContents, RenderProcessGoneDetails } from 'electron'
+import { app, WebContents, RenderProcessGoneDetails, systemPreferences } from 'electron'
 import Constants from './utils/Constants'
 import { createErrorWindow, createMainWindow } from './MainRunner'
 
@@ -17,6 +17,13 @@ app.on('ready', async () => {
     systemPreferences.setUserDefault('NSDisabledCharacterPaletteMenuItem', 'boolean', true)
   }
   */
+
+  // allow autoplay
+  app.commandLine.appendSwitch('autoplay-policy', 'no-user-gesture-required')
+  app.commandLine.appendSwitch('disable-features', 'AudioServiceOutOfProcess')
+
+  // allow background audio playback
+  app.commandLine.appendSwitch('allow-background-audio-playback')
 
   mainWindow = await createMainWindow()
 })
