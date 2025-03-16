@@ -2,6 +2,20 @@ import { defineStore } from 'pinia'
 import etro from 'etro'
 import { estimateTextWidth } from '../utils/stringUtils'
 
+interface Shape {
+  type: 'triangle' | 'star'
+  x: number
+  y: number
+  color: any
+  createdAt: number
+  duration: number
+  size?: number // for triangle
+  innerRadius?: number // for star
+  outerRadius?: number // for star
+  spikes?: number // for star
+  layer?: any[] // Reference to layer
+}
+
 const sources = [
   {
     description:
@@ -239,6 +253,46 @@ export const useVideoEditorStore = defineStore('videoEditorStore', {
       })
       layers.push(textLayer)
       return layers
+    },
+
+    addStarLayer(shape: Shape) {
+      try {
+        // create a star layer using Text Layer
+        const starTextLayer = new etro.layer.Text({
+          text: '★', // use unicode star
+          font: `${shape.outerRadius! * 2}px sans-serif`,
+          color: shape.color,
+          x: shape.x - shape.outerRadius! / 2,
+          y: shape.y + shape.outerRadius! / 2,
+          startTime: shape.createdAt,
+          duration: shape.duration
+        })
+
+        return [starTextLayer]
+      } catch (error) {
+        console.error('Error creating star:', error)
+        return []
+      }
+    },
+
+    addTriangleLayer(shape: Shape) {
+      try {
+        // create a triangle layer using Text Layer
+        const triangleTextLayer = new etro.layer.Text({
+          text: '▲', // use unicode triangle
+          font: `${shape.size! * 2}px sans-serif`,
+          color: shape.color,
+          x: shape.x - shape.size! / 2,
+          y: shape.y + shape.size! / 2,
+          startTime: shape.createdAt,
+          duration: shape.duration
+        })
+
+        return [triangleTextLayer]
+      } catch (error) {
+        console.error('Error creating triangle:', error)
+        return []
+      }
     },
     makeMovie() {
       // remove all layers
