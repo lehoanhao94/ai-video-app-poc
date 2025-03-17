@@ -1,5 +1,10 @@
 // import { MainScreen } from '@/renderer/screens'
-import { HomeScreen, TextToVideoScreen, VideoEditorScreen } from '@/renderer/screens'
+import {
+  HomeScreen,
+  TextToVideoScreen,
+  VideoEditorScreen,
+  ProjectsScreen
+} from '@/renderer/screens'
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 export default createRouter({
@@ -34,6 +39,13 @@ export default createRouter({
       meta: {
         titleKey: 'title.visuals',
         layout: 'VideoEditorLayout'
+      }
+    },
+    {
+      path: '/projects',
+      component: ProjectsScreen,
+      meta: {
+        titleKey: 'title.projects'
       }
     },
     {

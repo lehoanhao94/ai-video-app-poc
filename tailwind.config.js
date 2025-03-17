@@ -5,6 +5,6 @@ module.exports = {
     { pattern: /(bg|text|border)-./ },
     { pattern: /dark:(bg|text|border)-./ },
     'bg-yellow-500',
-    'dark:bg-yellow-900/30',
+    'dark:bg-yellow-900/30'
   ]
 }

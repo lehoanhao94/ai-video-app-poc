@@ -107,9 +107,13 @@ const onRestart = () => {
 // }
 
 const exportToBlob = async () => {
+  videoEditorStore.makeMovie()
+  movie.value?.stop()
+  isPlaying.value = false
   movie.value
     ?.record({
-      frameRate: 1,
+      frameRate: 10,
+      duration: 10,
       type: 'video/mp4',
       video: true,
       audio: true,
@@ -122,7 +126,7 @@ const exportToBlob = async () => {
       const url = URL.createObjectURL(blob)
       const a = document.createElement('a')
       a.href = url
-      a.download = 'etro.mp4'
+      a.download = 'demo.mp4'
       a.click()
     })
 }

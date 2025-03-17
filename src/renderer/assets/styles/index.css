@@ -3,7 +3,6 @@
   scrollbar-width: thin;
 }
 
-
 .scrollbar-thin::-webkit-scrollbar-track,
 body::-webkit-scrollbar-track {
   border-radius: 25px !important;

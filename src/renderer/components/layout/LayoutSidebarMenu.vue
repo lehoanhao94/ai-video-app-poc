@@ -11,7 +11,7 @@
       <div class="px-4 py-6 flex-1">
         <ul class="flex flex-col gap-2 overflow-hidden">
           <template v-for="(item, index) of navs" :key="index">
-            <li>
+            <li @click="item.to && router.push(item.to)">
               <button
                 :class="
                   selectedNav === item.label
@@ -53,6 +53,8 @@
 <script setup>
 import { ref } from 'vue'
 import BaseLogo from '../base/BaseLogo.vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const selectedNav = ref('Home')
 const bottomNavs = ref([
   {
@@ -67,11 +69,13 @@ const bottomNavs = ref([
 const navs = ref([
   {
     icon: 'hugeicons:home-03',
-    label: 'Home'
+    label: 'Home',
+    to: '/'
   },
   {
     icon: 'hugeicons:folder-03',
-    label: 'Projects'
+    label: 'Projects',
+    to: '/projects'
   },
   {
     icon: 'hugeicons:user-group',

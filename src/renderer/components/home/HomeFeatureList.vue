@@ -21,10 +21,11 @@
       </div>
     </div>
     <div>
-      <div class="dark:bg-yellow-900/30"></div>
-      <div class="dark:bg-green-900/30"></div>
-      <div class="dark:bg-red-900/30"></div>
-      <div class="dark:bg-sky-900/30"></div>
+      <div class="dark:bg-yellow-900/30 bg-yellow-50"></div>
+      <div class="dark:bg-green-900/30 bg-green-50"></div>
+      <div class="dark:bg-red-900/30 bg-red-50"></div>
+      <div class="dark:bg-sky-900/30 bg-sky-50"></div>
+      <div class="dark:bg-violet-900/30 bg-violet-50"></div>
     </div>
   </div>
 </template>
@@ -62,6 +63,13 @@ const features = computed(() => [
       'Transform your image into a video with AI. You can use this feature to create videos from your existing image content.',
     icon: 'fluent-color:image-24',
     color: 'sky'
+  },
+  {
+    title: 'PPT to video',
+    description:
+      'Transform your PPT into a video with AI. You can use this feature to create videos from your existing PPT content.',
+    icon: 'vscode-icons:file-type-powerpoint',
+    color: 'violet'
   }
 ])
 </script>

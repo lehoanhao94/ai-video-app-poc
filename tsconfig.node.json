@@ -8,11 +8,15 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": [
     "src/main",
     "src/preload",
+    "src/types",
     "package.json",
     "vite.config.mts",
     "buildAssets/builder",

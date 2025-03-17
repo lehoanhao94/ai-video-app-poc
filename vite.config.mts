@@ -102,6 +102,9 @@ export default defineConfig(({ mode }) => {
       ElectronPlugin(electronPluginConfigs),
       RendererPlugin(),
       tailwindcss()
-    ]
+    ],
+    server: {
+      allowedHosts: ['rnbir-240d-f-a80-3e00-dc3-eee5-a1c8-b9f3.a.free.pinggy.link']
+    }
   }
 })

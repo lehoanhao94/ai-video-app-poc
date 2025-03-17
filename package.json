@@ -1,6 +1,6 @@
 {
-  "name": "AI Video Generator",
-  "appId": "com.tts.aivideo",
+  "name": "AIVideoGenerator",
+  "appId": "com.tts.aivideomaker",
   "version": "1.0.0",
   "description": "Quick Start Templates for Vite + Vue 3 + Electron",
   "homepage": "https://vutron.cdget.com",
@@ -47,6 +47,7 @@
     "@tailwindcss/vite": "^4.0.14",
     "etro": "^0.12.1",
     "konva": "^9.3.19",
+    "lowdb": "^7.0.1",
     "pinia": "^3.0.1",
     "primeicons": "^7.0.0",
     "primevue": "^4.3.2",

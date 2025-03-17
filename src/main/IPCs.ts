@@ -1,6 +1,6 @@
 import { ipcMain, shell, IpcMainEvent, dialog } from 'electron'
 import Constants from './utils/Constants'
-
+import { getProjectFolders, addProjectFolder } from './dbs/projectFoldersModel'
 /*
  * IPC Communications
  * */
@@ -29,6 +29,15 @@ export default class IPCs {
         filters
       })
       return dialogResult
+    })
+
+    // projects IPCs (CRUD)
+    ipcMain.handle('db_getProjectFolders', async () => {
+      return getProjectFolders()
+    })
+
+    ipcMain.handle('db_addProjectFolder', async (event: IpcMainEvent, name: string) => {
+      return addProjectFolder(name)
     })
   }
 }
